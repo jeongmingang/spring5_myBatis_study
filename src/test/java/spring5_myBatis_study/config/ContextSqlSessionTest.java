@@ -14,7 +14,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {ControllerConfig.class} )
+@ContextConfiguration(classes = {ContextRoot.class} )
 public class ContextSqlSessionTest {
 	private static final Log log = LogFactory.getLog(ContextSqlSessionTest.class);
 
