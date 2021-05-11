@@ -1,7 +1,10 @@
 package spring5_myBatis_study.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,6 +22,11 @@ public class StudentMapperTest {
 	
 	@Autowired
 	private StudentMapper mapper;
+	
+	@After
+	public void tearDown() throws Exception {
+		System.out.println();
+	}
 
 	@Test
 	public void testSelectStudentById() {
@@ -44,6 +52,16 @@ public class StudentMapperTest {
 		log.debug(selectStudent.toString());
 		
 		Assert.assertNotNull(student);
+	}
+	
+	@Test
+	public void testSelectStudentByAll() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		
+		List<Student> list = mapper.selectStudentByAll();
+		Assert.assertNotNull(list);
+		
+		list.stream().forEach(System.out::println);
 	}
 
 }
