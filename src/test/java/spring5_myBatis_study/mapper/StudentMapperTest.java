@@ -32,5 +32,18 @@ public class StudentMapperTest {
 		
 		Assert.assertNotNull(student);
 	}
+	
+	@Test
+	public void testSelectStudentByIdWithResultMap() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		
+		Student student = new Student();
+		student.setStudId(1);
+		Student selectStudent = mapper.selectStudentByIdWithResultMap(student);
+		
+		log.debug(selectStudent.toString());
+		
+		Assert.assertNotNull(student);
+	}
 
 }
