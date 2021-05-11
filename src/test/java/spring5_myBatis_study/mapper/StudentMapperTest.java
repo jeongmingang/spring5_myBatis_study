@@ -61,7 +61,9 @@ public class StudentMapperTest {
 		List<Student> list = mapper.selectStudentByAll();
 		Assert.assertNotNull(list);
 		
-		list.stream().forEach(System.out::println);
+//		list.stream().forEach(System.out::println);
+//		System.out.println();
+		list.stream().forEach(s->log.debug(s.toString()));
 	}
 
 }
