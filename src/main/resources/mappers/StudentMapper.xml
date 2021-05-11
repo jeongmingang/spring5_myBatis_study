@@ -52,7 +52,7 @@
 	
 	<update id="updateStudent" parameterType="Student">
 		update students
-			set name=#{name}, email=#{email}, phone=#{phone}, dob=#{dob}
+			set name = #{name}, email = #{email}, phone = #{phone}, dob = #{dob}
 		<include refid="whereSQL"/>
 	</update>
 </mapper>
