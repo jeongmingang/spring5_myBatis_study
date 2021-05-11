@@ -9,7 +9,7 @@
 	</select>
 	
 	<resultMap type="Student" id="stdResult">
-		<id column="stud_id" property="studId"/>
+		<id column="stud_id" property="studId"/>	<!-- Student의  studId 프로터티를 set해서 자동으로 넣어달라 -->
 		<result column="f" property="phone.countryCode" />
 		<result column="m" property="phone.stateCode" />
 		<result column="l" property="phone.number" />
