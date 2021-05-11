@@ -8,4 +8,8 @@ public interface StudentMapper {
 	Student selectStudentById(Student student);
 	Student selectStudentByIdWithResultMap(Student student);
 	List<Student> selectStudentByAll();
+	
+	int insertStudent(Student student);
+	int updateStudent(Student student);
+	int deleteStudent(int id);
 }

@@ -17,3 +17,12 @@ select stud_id, name, email, dob,
 	from students where stud_id = 1;
 
 select stud_id, name, email, phone, dob from students;
+
+insert into students (stud_id, name, email, phone, dob)
+ values(3, '홍길동3', 'lee@test.co.kr', '010-1234-1234', '1990-03-28');
+
+update students
+	set name = '홍길동전', email = 'hong@test.co.kr', phone = '987-654-3211', dob = '1989-08-13'
+ where stud_id = 3;
+
+delete from students where stud_id = 3;

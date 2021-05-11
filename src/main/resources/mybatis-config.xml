@@ -9,7 +9,6 @@
 	</typeAliases>	<!-- 위치가 중요함, 위로 올라갈시 에러 발생 -->
 	
 	<typeHandlers>
-		<typeHandler handler="spring5_myBatis_study.typehandlers.PhoneTypeHandler"/>
 		<package name="spring5_myBatis_study.typehandlers"/>
 	</typeHandlers>
 </configuration>
