@@ -77,7 +77,7 @@ public class UserPicMapperTest {
 		
 		Assert.assertNotNull(userPic);
 	}
-
+ 
 	private File getPicFile(UserPic userPic) {
 		File pics = new File(System.getProperty("user.dir") + "\\pics\\");
 		
