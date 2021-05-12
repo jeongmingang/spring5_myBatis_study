@@ -55,4 +55,29 @@
 			set name = #{name}, email = #{email}, phone = #{phone}, dob = #{dob}
 		<include refid="whereSQL"/>
 	</update>
+	
+	<!-- HashMap -->
+	<select id="selectStudentByAllForHashMap" resultType="map">
+		<include refid="selectSQL"/>
+	</select>
+	
+	<resultMap id="StudentResult" type="Student">
+		<id property="studId" column="stud_id" />
+		<result property="name" column="name" />
+		<result property="email" column="email" />
+		<result property="phone" column="phone" />
+		<result property="dob" column="dob" />
+	</resultMap>
+	
+	<resultMap id="StudentResultAssociation" type="Student" extends="StudentResult">
+		<association property="address" resultMap="spring5_myBatis_study.mapper.AddressMapper.AddressResult" />
+	</resultMap>
+	
+	<select id="selectStudentByIdAssociation" resultMap="StudentResultAssociation"> 
+		select stud_id, name, email, phone, dob, a.addr_id, street, city, state, zip, country
+			from students s 
+			join addresses a 
+				on s.addr_id = a.addr_id
+		<include refid="whereSQL"/>
+	</select>
 </mapper>

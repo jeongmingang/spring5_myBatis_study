@@ -26,3 +26,23 @@ update students
  where stud_id = 3;
 
 delete from students where stud_id = 3;
+
+-- 조인
+select stud_id, name, email, phone, dob, a.addr_id, street, city, state, zip, country
+	from students s 
+	join addresses a 
+		on s.addr_id = a.addr_id
+where stud_id = 1;
+
+-- 일대 다(1:N) 매핑
+select t.tutor_id
+	 , t.name as tutor_name
+	 , email
+	 , c.course_id
+	 , c.name
+	 , description
+	 , start_date
+	 , end_date
+	from tutors t join courses c on t.tutor_id = c.tutor_id
+ where t.tutor_id = 1;
+ 
