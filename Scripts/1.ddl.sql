@@ -56,9 +56,17 @@ create table course_enrollment(
 	primary key (course_id,stud_id),
 	constraint fk_enrollment_stud foreign key (stud_id) references students (stud_id),
 	constraint fk_enrollment_course foreign key (course_id) references courses (course_id)
+) comment '수강등록';
+
+alter table students add gender tinyint unsigned;
+
+/* longblob, longtext */
+
+CREATE TABLE user_pics (
+	id int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
+	name varchar(50) not NULL COMMENT 'name',
+	pic longblob COMMENT 'pic',
+	bio longtext COLLATE utf8_unicode_ci COMMENT 'bio',
+	PRIMARY KEY (id)
 );
-
-
-
-
 

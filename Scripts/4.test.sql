@@ -5,6 +5,9 @@ select * from students;
 select * from tutors;
 select * from courses;
 select * from course_enrollment;
+select * from user_pics;
+
+desc user_pics;
 
 select stud_id, name, email, dob, phone
 	from students
@@ -45,4 +48,9 @@ select t.tutor_id
 	 , end_date
 	from tutors t join courses c on t.tutor_id = c.tutor_id
  where t.tutor_id = 1;
- 
+
+delete from students where stud_id > 2;
+select * from students;
+
+
+
