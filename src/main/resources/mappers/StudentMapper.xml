@@ -74,7 +74,8 @@
 	</resultMap>
 	
 	<select id="selectStudentByIdAssociation" resultMap="StudentResultAssociation"> 
-		select stud_id, name, email, phone, dob, a.addr_id, street, city, state, zip, country
+		select stud_id, name, email, phone, dob
+			 , a.addr_id, street, city, state, zip, country
 			from students s 
 			join addresses a 
 				on s.addr_id = a.addr_id
@@ -86,4 +87,34 @@
 		insert into students(stud_id, name, email,phone, dob, gender)
 		values(#{studId}, #{name}, #{email}, #{phone}, #{dob}, #{gender})
 	</insert>
+	
+	<!-- 여러 개의 입력 파라미터 전달 -->
+	<sql id="where_name_email">
+		<where>
+			<if test="name != null">
+				name = #{name}
+			</if>
+			<if test="email != null">
+				AND email = #{email}
+			</if>
+		</where>
+	</sql>
+	
+	<resultMap type="Student" id="StudentGenderResult" extends="StudentResult">
+		<result property="gender" column="gender" />
+	</resultMap>
+	<select id="selectStudentByMap" parameterType="map" resultMap="StudentGenderResult">
+		<include refid="selectSQL"/>
+		<include refid="where_name_email"/>
+	</select>
+	<select id="selectAllStudentByMap" parameterType="map" resultMap="StudentGenderResult">
+		<include refid="selectSQL"/>
+		<include refid="where_name_email"/>
+	</select>
+	
+	<!-- ResultSet 처리방식의 재정의 -->
+	<select id="selectStudentForMap" parameterType="Student" resultMap="StudentResult">
+		<include refid="selectSQL"/>
+		<include refid="whereSQL"/>
+	</select>
 </mapper>

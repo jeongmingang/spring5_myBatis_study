@@ -52,5 +52,39 @@ select t.tutor_id
 delete from students where stud_id > 2;
 select * from students;
 
+select stud_id, name, email, phone, dob from students WHERE name = 'Timothy' and email = 'timothy@gmail.com';
+
+-- 동적 sql if 조건
+select course_id, name, description, start_date, end_date, tutor_id 
+	from courses;
+
+select course_id, name, description, start_date, end_date, tutor_id 
+	from courses 
+ where tutor_id = 1;
+
+select course_id, name, description, start_date, end_date, tutor_id 
+	from courses
+ where name like '%java%';
+
+select course_id, name, description, start_date, end_date, tutor_id 
+	from courses
+ where tutor_id = 1 and name like '%java%';
+
+select course_id, name, description, start_date, end_date, tutor_id 
+	from courses
+ where start_date >= '2013-02-01';
+
+select course_id, name, description, start_date, end_date, tutor_id 
+	from courses
+ where end_date <= '2013-07-01';
+
+select course_id, name, description, start_date, end_date, tutor_id 
+	from courses
+ where start_date >= '2013-02-01' and end_date <= '2013-07-01';
+
+select course_id, name, description, start_date, end_date, tutor_id 
+	from courses
+ where start_date >= '2013-02-01' or end_date <= '2013-07-01';
 
 
+	

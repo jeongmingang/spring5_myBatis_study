@@ -3,6 +3,7 @@ package spring5_myBatis_study.mapper;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -181,5 +182,54 @@ public class StudentMapperTest {
 		
 		mapper.deleteStudent(3);
 		mapper.deleteStudent(4);
+	}
+	
+	@Test
+	public void test12SelectStudentByMap() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
+		
+		Map<String, String> maps = new HashMap<>();
+		maps.put("name", "Timothy");
+		maps.put("email", "timothy@gmail.com");
+		Student student = mapper.selectStudentByMap(maps);
+		Assert.assertNotNull(student);
+		log.debug(student.toString());
+
+		maps.remove("email");
+		student = mapper.selectStudentByMap(maps);
+		log.debug(student.toString());
+		
+		maps.clear();
+		maps.put("email", "timothy@gmail.com");
+		student = mapper.selectStudentByMap(maps);
+		log.debug(student.toString());
+	}
+	
+	@Test
+	public void test13SelectAllStudentByMap() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
+		
+		Map<String, String> maps = new HashMap<>();
+		maps.put("name", "Timothy");
+		maps.put("email", "timothy@gmail.com");
+		List<Student> list = mapper.selectAllStudentByMap(maps);
+		Assert.assertNotNull(list);
+		list.stream().forEach(s->log.debug(s.toString()));
+		System.out.println();
+		
+		maps.remove("email");
+		list = mapper.selectAllStudentByMap(maps);
+		list.stream().forEach(s->log.debug(s.toString()));
+		System.out.println();
+		
+		maps.clear();
+		maps.put("email", "timothy@gmail.com");
+		list = mapper.selectAllStudentByMap(maps);
+		list.stream().forEach(s->log.debug(s.toString()));
+		System.out.println();
+		
+		maps.clear();
+		list = mapper.selectAllStudentByMap(maps);
+		list.stream().forEach(s->log.debug(s.toString()));
 	}
 }
