@@ -86,5 +86,8 @@ select course_id, name, description, start_date, end_date, tutor_id
 	from courses
  where start_date >= '2013-02-01' or end_date <= '2013-07-01';
 
+select * from courses;
+delete from courses where course_id > 3;
 
-	
+select * from tutors;
+delete from tutors where tutor_id = 5;
