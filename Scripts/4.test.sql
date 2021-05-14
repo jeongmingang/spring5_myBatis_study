@@ -46,7 +46,7 @@ select t.tutor_id
 	 , description
 	 , start_date
 	 , end_date
-	from tutors t join courses c on t.tutor_id = c.tutor_id
+	from tutors t left join courses c on t.tutor_id = c.tutor_id
  where t.tutor_id = 1;
 
 delete from students where stud_id > 2;
@@ -94,8 +94,6 @@ delete from tutors where tutor_id = 5;
 
 select tutor_id, name, email, phone, dob, bio, pic, addr_id
 	from tutors 
- where tutor_id = 1;
+ where tutor_id = 3;
 
-		delete
-			from courses
-		 where course_id=7;
+
