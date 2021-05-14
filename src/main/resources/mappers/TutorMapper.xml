@@ -23,12 +23,23 @@
 	</select>
 	
 	<!-- transaction -->
+		<resultMap type="Tutor" id="resT">
+			<id property="tutorId" column="tutor_id"/>
+			<result property="address.addrId" column="addr_id"/>
+		</resultMap>
+	
+	<select id="selectTutorById" resultMap="resT">
+		select tutor_id, name, email, phone, dob, bio, pic, addr_id
+			from tutors 
+		 where tutor_id = #{tutorId}
+	</select>
+	
 	<insert id="insertTutor" parameterType="Tutor">
 		insert into tutors(tutor_id, name, email, phone, addr_id)
 			values (#{tutorId}, #{name}, #{email}, #{phone}, #{address.addrId})
 	</insert>
 	
-	<delete id="deleteTutor">
+	<delete id="deleteTutor" parameterType="int">
 		delete from tutors
 			where tutor_id=#{tutorId}
 	</delete>

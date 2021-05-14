@@ -208,4 +208,28 @@ public class CourseMapperTest {
 		int res = mapper.deleteCourses(map);
 		Assert.assertEquals(3, res);
 	}
+	
+	// Transaction
+	@Test
+	public void test10insertCourse() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		
+		Course course = new Course(7, "oracle", "database", new Date(), new Date(), 4);
+		int res = mapper.insertCourse(course);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("tutorId", 4);
+		System.out.println();
+		
+		List<Course> list = mapper.selectCoursesByCondition(map);
+		list.stream().forEach(System.out::println);
+	}
+	
+	@Test
+	public void test11DeleteCourse() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		
+		int res =  mapper.deleteCourse(7);
+		Assert.assertEquals(1, res);
+	}
 }

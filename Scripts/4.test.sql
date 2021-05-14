@@ -60,7 +60,7 @@ select course_id, name, description, start_date, end_date, tutor_id
 
 select course_id, name, description, start_date, end_date, tutor_id 
 	from courses 
- where tutor_id = 1;
+ where tutor_id = 4;
 
 select course_id, name, description, start_date, end_date, tutor_id 
 	from courses
@@ -91,3 +91,11 @@ delete from courses where course_id > 3;
 
 select * from tutors;
 delete from tutors where tutor_id = 5;
+
+select tutor_id, name, email, phone, dob, bio, pic, addr_id
+	from tutors 
+ where tutor_id = 1;
+
+		delete
+			from courses
+		 where course_id=7;

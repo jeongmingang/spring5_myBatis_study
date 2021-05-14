@@ -35,7 +35,7 @@ public class TutorMapperTest {
 	}
 
 	@Test
-	public void test02SelectTutorByTutorId() {
+	public void test01SelectTutorByTutorId() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 		
 		Tutor findTutor = new Tutor();
@@ -51,22 +51,44 @@ public class TutorMapperTest {
 		list.stream().forEach(t->log.debug(t.toString()));
 	}
 	
+	// Transaction
+	
 	@Test
-	public void test01InsertTutorAndDeleteTutor() {
+	public void test02InsertTutor() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 		
 		Address address = new Address();
 		address.setAddrId(2);
+		
 		PhoneNumber phone = new PhoneNumber("010-2222-2222");
 		
 		Tutor tutor = new Tutor(5, "mskim", "net94@naver.com", phone, address);
 		int res = mapper.insertTutor(tutor);
 		
-//		Tutor findTutor = mapper.selectTutorByTutorId(tutor);
-//		log.debug(findTutor.toString());	//course과목에 tutor_id가 3이상이 없으므로 안나옴
+		Assert.assertEquals(1, res);
+	}
+	
+	@Test
+	public void test03SelectTutorById() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 		
-		res += mapper.deleteTutor(tutor.getTutorId());
+		Tutor tutor = new Tutor();
+		tutor.setTutorId(5);
 		
-		Assert.assertEquals(2, res);
+		Tutor findTutor = mapper.selectTutorById(tutor);
+		Assert.assertEquals(tutor.getTutorId(), findTutor.getTutorId());
+		log.debug(findTutor.toString());
+	}
+	
+	@Test
+	public void test04DeleteTutor() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		
+		Tutor tutor = new Tutor();
+		tutor.setTutorId(5);
+		
+		int res = mapper.deleteTutor(tutor.getTutorId());
+		
+		Assert.assertEquals(1, res);
 	}
 }

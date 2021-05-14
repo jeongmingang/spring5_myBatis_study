@@ -63,9 +63,17 @@ public class Tutor {
 		this.courses = courses;
 	}
 
+	public PhoneNumber getPhone() {
+		return phone;
+	}
+
+	public void setPhone(PhoneNumber phone) {
+		this.phone = phone;
+	}
+
 	@Override
 	public String toString() {
-		return String.format("Tutor [%s, %s, %s, %s, %s]",
-				tutorId, name, email, address, courses);
+		return String.format("Tutor [%s, %s, %s, %s, %s, %s]",
+				tutorId, name, email, address, phone, courses);
 	}
 }
